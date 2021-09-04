@@ -18,10 +18,16 @@ public class PessoaController {
     @Autowired
     PessoaRepository repository;
 
-    //@GetMapping(path = "/pessoas")
-    //public String listar (){
-       // return "nome, email, sexo, sobrenome, dataNascimento";
-    //}
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) throws Exception {
+        Pessoa pessoa = this.repository.findById(id);
+        return ResponseEntity.ok(pessoa);
+
+        //@GetMapping(path = "/pessoas")
+        //public String listar (){
+        // return "nome, email, sexo, sobrenome, dataNascimento";
+        //}
+    }
 
     @PostMapping
     public ResponseEntity<Object> Cadastrar (@RequestBody Pessoa pessoa){

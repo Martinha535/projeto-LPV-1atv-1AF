@@ -1,9 +1,7 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Pessoa {
@@ -12,8 +10,12 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Column
+    @Email
     private String email;
+    @Column
     private String sexo;
+    @Temporal(TemporalType.DATE)
     private String sobrenome;
     private String dataDeNascimento;
 
